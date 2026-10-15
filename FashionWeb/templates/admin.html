@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Trị Hệ Thống</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f8f9fa; color: #333; }
+        
+        header { background: #ffffff; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-container img { height: 40px; width: 40px; object-fit: cover; border-radius: 50%; border: 2px solid #007bff; }
+        .logo-container h1 { font-size: 22px; color: #2c3e50; }
+        
+        nav a { margin-left: 20px; text-decoration: none; color: #555; font-weight: 600; }
+        nav a:hover, nav a.active { color: #007bff; }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        h2 { margin-bottom: 25px; color: #2c3e50; border-bottom: 2px solid #007bff; padding-bottom: 10px; display: inline-block; }
+
+        table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #dee2e6; }
+        th { background-color: #007bff; color: white; font-weight: 600; }
+        tr:hover { background-color: #f1f3f5; }
+        
+        .thumb { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+            <h1>Fashion Store</h1>
+        </div>
+        <nav>
+            <a href="/">Trang Chủ</a>
+            <a href="/shop">Cửa Hàng</a>
+            <a href="/contact">Liên Hệ</a>
+            <a href="/admin" class="active">Quản Trị</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Quản Lý Danh Sách Sản Phẩm</h2>
+        <table>
+            <tr>
+                <th>Ảnh</th>
+                <th>Mã SP</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Giá (VNĐ)</th>
+            </tr>
+            {% for p in products %}
+            <tr>
+                <td>
+                    <img class="thumb" src="{{ url_for('static', filename='images/' + (p.HinhAnh if p.HinhAnh else 'default.jpg')) }}" alt="">
+                </td>
+                <td>{{ p.MaSanPham }}</td>
+                <td>{{ p.TenSanPham }}</td>
+                <td style="color: #e74c3c; font-weight: bold;">{{ "{:,.0f}".format(p.Gia) }} đ</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" style="text-align: center; color: #777; padding: 30px;">Không có dữ liệu sản phẩm.</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

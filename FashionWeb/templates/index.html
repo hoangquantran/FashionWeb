@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Chủ - Cửa Hàng Thời Trang</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f8f9fa; color: #333; }
+        
+        /* Header & Logo */
+        header { background: #ffffff; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-container img { height: 50px; width: 50px; object-fit: cover; border-radius: 50%; border: 2px solid #007bff; }
+        .logo-container h1 { font-size: 24px; color: #2c3e50; }
+        
+        nav a { margin-left: 20px; text-decoration: none; color: #555; font-weight: 600; transition: color 0.3s; }
+        nav a:hover, nav a.active { color: #007bff; }
+
+        /* Banner */
+        .banner { background: linear-gradient(135deg, #007bff, #0056b3); color: white; text-align: center; padding: 80px 20px; }
+        .banner h2 { font-size: 40px; margin-bottom: 15px; }
+        .banner p { font-size: 18px; margin-bottom: 25px; opacity: 0.9; }
+        .btn { background: #ffc107; color: #333; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: bold; transition: background 0.3s; }
+        .btn:hover { background: #e0a800; }
+
+        /* Footer */
+        footer { text-align: center; padding: 20px; background: #2c3e50; color: white; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+    <img src="{{ url_for('static', filename='images/Logo.png') }}" alt="Logo">
+    <h1>Quanchan clothing</h1>
+</div>
+        <nav>
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="/shop">Cửa Hàng</a>
+            <a href="/contact">Liên Hệ</a>
+            <a href="/admin">Quản Trị</a>
+        </nav>
+    </header>
+
+    <div class="banner">
+        <h2>Bộ Sưu Tập Thời Trang Mới Nhất 2026</h2>
+        <p>Khám phá phong cách thời trang đỉnh cao, hiện đại và cá tính dành riêng cho bạn.</p>
+        <a href="/shop" class="btn">Mua Sắm Ngay</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cửa Hàng Thời Trang. Bản quyền thuộc về bạn.</p>
+    </footer>
+</body>
+</html>
